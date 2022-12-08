@@ -119,3 +119,8 @@ def vigenere_cipher(message, key):
         indKey = key[x]
         encryptedText += chr(ord(indLet) + ord(indKey)-64)
     return str(encryptedText)
+
+
+y = "123456789"
+y=y[1:-1]
+print(y)

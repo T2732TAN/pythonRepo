@@ -102,6 +102,18 @@ def tic_tac_toe(board):
 
     return full(board)
 
+legs = {
+     ("upd","admu"):{
+         "travel_time_mins":10
+     },
+     ("admu","dlsu"):{
+         "travel_time_mins":35
+     },
+     ("dlsu","upd"):{
+         "travel_time_mins":55
+     }
+}
+
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
     20 points.
@@ -128,4 +140,18 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    total = 0
+    for x in route_map:
+        total += legs[x]['travel_time_mins']
+
+    if first_stop == second_stop:
+        return total
+    for y in route_map:
+        if first_stop in y and second_stop in y:
+            if (first_stop,second_stop)==y:
+                return route_map[y]['travel_time_mins']
+            else:
+                return total-route_map[y]['travel_time_mins']
+
+
+
